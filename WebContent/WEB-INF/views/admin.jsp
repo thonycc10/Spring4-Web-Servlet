@@ -17,6 +17,10 @@
 	
 	<sf:form action="${pageContext.request.contextPath}/admin/save" method="post" commandName="admin">
 		<table>
+		<c:if test="${admin.idAd ne 0 }">
+		<sf:input path="idAd" type="hidden"/>
+		<sf:input path="fechaCreacion" type="hidden"/>
+		</c:if>
 		<tr>
 			<td>Nombre</td>
 			<td><sf:input path="nombre" type="text"/></td>
@@ -37,9 +41,11 @@
 		//	out.print(admin);
 		// }
 	%>
-	<c:out value="${resultado}"></c:out>
+	<c:out value="${resultado}"></c:out><br><br>
 	<c:forEach items="${listAdmin}" var="admin">
-	 	<c:out value="${admin}"></c:out><br>
+	 	<c:out value="${admin}"/>
+	 	<a href='<c:url value="/admin/${admin.idAd}/update"></c:url>'>Actualizar</a>
+	 	<br>
 	</c:forEach>
 </body>
 </html>

@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
@@ -43,7 +44,7 @@ public class AdminController {
 //		System.out.println(adminForm);
 //		System.out.println("request param "+estado);
 		
-		if (adminService.save(adminForm)) {
+		if (adminService.saveOrUpdate(adminForm)) {
 			ra.addFlashAttribute("resultado", "cambios realizados con exito");		
 		} else {
 			ra.addFlashAttribute("resultado", "Error a realizar cambios");
@@ -51,5 +52,14 @@ public class AdminController {
 		
 	
 		return "redirect:/admin";
+	}
+	
+//	/admin/${admin.idAd}/update
+	@RequestMapping(value="/admin/{idAd}/update")
+	public String showUpdate(Model model, @PathVariable("idAd") int id) {
+		
+		Admin admin = adminService.findById(id);
+		model.addAttribute("admin", admin); // el que esta en collimas se comunica con el jsp
+		return "admin";
 	}
 }

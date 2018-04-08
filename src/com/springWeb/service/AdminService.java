@@ -27,4 +27,19 @@ public class AdminService {
 		// TODO Auto-generated method stub
 		return adminDao.findAll();
 	}
+
+	public Admin findById(int id) {
+		// TODO Auto-generated method stub
+		return adminDao.findById(id);
+	}
+
+	public boolean saveOrUpdate(Admin admin) {
+		// TODO Auto-generated method stub
+		if (admin.getIdAd() == 0) { // si el id fuera igual a 0 registra sino actualiza
+			admin.setFechaCreacion(new Timestamp(new Date().getTime()));
+			return adminDao.save(admin);
+		}else {
+			return adminDao.update(admin);	
+		}
+	}
 }
