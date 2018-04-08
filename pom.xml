@@ -66,5 +66,10 @@
     <artifactId>spring-jdbc</artifactId>
     <version>4.0.2.RELEASE</version>
 </dependency>
+   	<dependency>
+   		<groupId>mysql</groupId>
+   		<artifactId>mysql-connector-java</artifactId>
+   		<version>5.1.45</version>
+   	</dependency>
    </dependencies>
 </project>
