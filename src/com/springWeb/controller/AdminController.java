@@ -1,5 +1,7 @@
 package com.springWeb.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -24,8 +26,12 @@ public class AdminController {
 	@RequestMapping("/admin")
 	public String showAdmin(Model model, @ModelAttribute("resultado")String resultado) {
 		Admin admin = new Admin();
+		
+		List<Admin> listAdmin = adminService.findAll();
+		
 		model.addAttribute("admin", admin);
 		model.addAttribute("resultado", resultado);
+		model.addAttribute("listAdmin", listAdmin);
 		return "admin";
 	}
 //	un requestParam es esto -> /admin?id=0

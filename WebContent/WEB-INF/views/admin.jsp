@@ -32,6 +32,14 @@
 	</table>
 	</sf:form>
 	<br>
+	<%
+	//	for(Admin admin: listAdmin){
+		//	out.print(admin);
+		// }
+	%>
 	<c:out value="${resultado}"></c:out>
+	<c:forEach items="${listAdmin}" var="admin">
+	 	<c:out value="${admin}"></c:out><br>
+	</c:forEach>
 </body>
 </html>
