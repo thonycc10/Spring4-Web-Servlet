@@ -5,11 +5,11 @@ import java.util.List;
 import com.springWeb.pojo.Admin;
 
 public interface AdminDao {
-	
-	public void save(Admin admin);
-	public List<Admin> findAll();
-	public Admin findById(int id);
-	public List<Admin> findByNombre(String nombre);
-	public void update(Admin admin);
-	public void delete(int idAd);
+	// meltodos crud
+	public void save(Admin admin); // Guardar
+	public List<Admin> findAll(); // Mostrar 
+	public Admin findById(int id); // buscar
+	public List<Admin> findByNombre(String nombre); //listar
+	public void update(Admin admin); // actualizar
+	public void delete(int idAd); // eliminar
 }
