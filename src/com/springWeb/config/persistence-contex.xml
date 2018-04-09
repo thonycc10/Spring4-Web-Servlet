@@ -3,10 +3,13 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xmlns:jee="http://www.springframework.org/schema/jee"
 	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:tx="http://www.springframework.org/schema/tx"
 	xsi:schemaLocation="http://www.springframework.org/schema/jee http://www.springframework.org/schema/jee/spring-jee-4.0.xsd
 		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
-		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.0.xsd">
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.0.xsd
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.0.xsd">
 
+	
 
 	<jee:jndi-lookup jndi-name="jdbc/spring" id="dataSource"
 		expected-type="javax.sql.DataSource">
@@ -15,4 +18,25 @@
 	<context:annotation-config></context:annotation-config>
 	<!-- permite a las inyecciones de independencias.  -->
 	<context:component-scan base-package="com.springWeb.dao"></context:component-scan>
+	<!--  Configuracion hibernate-->
+	<bean id="sessionFactory"
+		class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
+	<property name="dataSource" ref="dataSource"></property>
+	<property name="packagesToScan" value="com.springWeb.pojo"></property>
+	<property name="hibernateProperties">
+		<props>
+			<prop key="hibernate.dialect">org.hibernate.dialect.MySQL5Dialect</prop>
+			<prop key="hibernate.show_sql">true</prop>
+		</props>
+	</property>
+	</bean>
+	<bean id="exceptionTranslator"
+		class="org.springframework.dao.annotation.PersistenceExceptionTranslationPostProcessor">
+	</bean>
+	<bean id="transactionManager"
+		class="org.springframework.orm.hibernate4.HibernateTransactionManager">
+	<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	
+	<tx:annotation-driven transaction-manager="transactionManager" />
 </beans>
