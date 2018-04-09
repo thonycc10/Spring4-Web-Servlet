@@ -2,9 +2,18 @@ package com.springWeb.pojo;
 
 import java.sql.Timestamp;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.Table;
+@Entity
+@Table(name="Admin")
 public class Admin {
-
+	@Id // con esto ya te olvidas de editar por cada uno de los atributos el @Column(por si los atributos se diferencian del DATATABLE)
+	@GeneratedValue // solo indicas que por medio del PK se realizara todos los cambioss.
 	private int idAd;
+//	@Column(name="nombre")
 	private String nombre;
 	private String cargo;
 	private Timestamp fechaCreacion;
