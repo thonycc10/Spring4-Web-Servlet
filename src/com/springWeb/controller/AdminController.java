@@ -44,12 +44,8 @@ public class AdminController {
 //		System.out.println(adminForm);
 //		System.out.println("request param "+estado);
 		
-		if (adminService.saveOrUpdate(adminForm)) {
+		 adminService.saveOrUpdate(adminForm);
 			ra.addFlashAttribute("resultado", "cambios realizados con exito");		
-		} else {
-			ra.addFlashAttribute("resultado", "Error a realizar cambios");
-		}
-		
 	
 		return "redirect:/admin";
 	}
@@ -58,8 +54,6 @@ public class AdminController {
 	@RequestMapping(value="/admin/{idAd}/update")
 	public String showUpdate(Model model, @PathVariable("idAd") int id) {
 		
-		Admin admin = adminService.findById(id);
-		model.addAttribute("admin", admin); // el que esta en collimas se comunica con el jsp
 		return "admin";
 	}
 	
@@ -67,12 +61,7 @@ public class AdminController {
 	@RequestMapping(value="/admin/{idAd}/delete")
 	public String delete(@PathVariable("idAd")int idAd,
 			RedirectAttributes ra) {
-		if (adminService.delete(idAd)) {
-			ra.addFlashAttribute("resultado","Cambios realizados con exito.");
-		}else {
-			ra.addFlashAttribute("resultado","Error al aplicar los cambios.");
-		}
-		
+
 		return "redirect:/admin";
 	}
 }

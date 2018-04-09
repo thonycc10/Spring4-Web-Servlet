@@ -17,10 +17,10 @@ public class AdminService {
 	@Autowired
 	private AdminDao adminDao;
 	
-	public boolean save(Admin admin) {
+	public void save(Admin admin) {
 //		añade la fecha de creacion automaticamente
 		admin.setFechaCreacion(new Timestamp(new Date().getTime()));
-		return adminDao.save(admin);
+		 adminDao.save(admin);
 	}
 
 	public List<Admin> findAll() {
@@ -33,18 +33,18 @@ public class AdminService {
 		return adminDao.findById(id);
 	}
 
-	public boolean saveOrUpdate(Admin admin) {
+	public void saveOrUpdate(Admin admin) {
 		// TODO Auto-generated method stub
 		if (admin.getIdAd() == 0) { // si el id fuera igual a 0 registra sino actualiza
 			admin.setFechaCreacion(new Timestamp(new Date().getTime()));
-			return adminDao.save(admin);
+			 adminDao.save(admin);
 		}else {
-			return adminDao.update(admin);	
+			 adminDao.update(admin);	
 		}
 	}
 
-	public boolean delete(int idAd) {
+	public void delete(int idAd) {
 		// TODO Auto-generated method stub
-		return adminDao.delete(idAd);
+		 adminDao.delete(idAd);
 	}
 }
