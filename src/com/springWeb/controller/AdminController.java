@@ -62,4 +62,17 @@ public class AdminController {
 		model.addAttribute("admin", admin); // el que esta en collimas se comunica con el jsp
 		return "admin";
 	}
+	
+//	/admin/${admin.idAd}/delete
+	@RequestMapping(value="/admin/{idAd}/delete")
+	public String delete(@PathVariable("idAd")int idAd,
+			RedirectAttributes ra) {
+		if (adminService.delete(idAd)) {
+			ra.addFlashAttribute("resultado","Cambios realizados con exito.");
+		}else {
+			ra.addFlashAttribute("resultado","Error al aplicar los cambios.");
+		}
+		
+		return "redirect:/admin";
+	}
 }

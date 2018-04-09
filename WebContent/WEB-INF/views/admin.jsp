@@ -10,7 +10,9 @@
 <script type="text/javascript"  src='<c:url value="/res/js/jquery.js" />'></script>
 <script type="text/javascript" >
  jQuery(document).ready(function(){
-	alert("Prueba Exitosa");
+	jQuery(".confirm").on("click", function(){
+		return confirm("Si eliminas este elemento no se podra recuperar. ¿Continuar?");
+	})
  });
 </script>
 </head>
@@ -51,6 +53,7 @@
 	<c:forEach items="${listAdmin}" var="admin">
 	 	<c:out value="${admin}"/>
 	 	<a href='<c:url value="/admin/${admin.idAd}/update"></c:url>'>Actualizar</a>
+	 	<a class="confirm" href='<c:url value="/admin/${admin.idAd}/delete"></c:url>'>Eliminar</a>
 	 	<br>
 	</c:forEach>
 </body>

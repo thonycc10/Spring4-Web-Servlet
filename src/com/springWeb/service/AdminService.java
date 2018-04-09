@@ -42,4 +42,9 @@ public class AdminService {
 			return adminDao.update(admin);	
 		}
 	}
+
+	public boolean delete(int idAd) {
+		// TODO Auto-generated method stub
+		return adminDao.delete(idAd);
+	}
 }
