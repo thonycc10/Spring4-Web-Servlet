@@ -7,6 +7,12 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Insert title here</title>
+<script type="text/javascript"  src='<c:url value="/res/js/jquery.js" />'></script>
+<script type="text/javascript" >
+ jQuery(document).ready(function(){
+	alert("Prueba Exitosa");
+ });
+</script>
 </head>
 <body>
 	<h1>Prueba:</h1>
