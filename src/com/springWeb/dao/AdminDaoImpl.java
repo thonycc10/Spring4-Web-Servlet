@@ -1,9 +1,11 @@
 package com.springWeb.dao;
 import java.util.List;
 
+import org.hibernate.Criteria;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
@@ -36,15 +38,17 @@ public class AdminDaoImpl implements AdminDao{
 	}
 
 	@Override
-	public Admin findById(int id) {
-		// TODO Auto-generated method stub
-		return null;
+	public Admin findById(int id) { // encontrar por id
+		Criteria crit = getSession().createCriteria(Admin.class);
+		crit.add(Restrictions.eq("idAd", id)); // de acuerdo a la anotacion jpa
+		return (Admin) crit.uniqueResult();
 	}
 
-	@Override
+	@Override // encontrar por nombre
 	public List<Admin> findByNombre(String nombre) {
-		// TODO Auto-generated method stub
-		return null;
+		Criteria crit = getSession().createCriteria(Admin.class);
+		crit.add(Restrictions.like("nombre", "%" + nombre + "%")); // se utiliza like si es string
+		return  crit.list();
 	}
 
 	@Override

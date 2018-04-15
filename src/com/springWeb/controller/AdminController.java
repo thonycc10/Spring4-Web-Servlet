@@ -53,7 +53,8 @@ public class AdminController {
 //	/admin/${admin.idAd}/update
 	@RequestMapping(value="/admin/{idAd}/update")
 	public String showUpdate(Model model, @PathVariable("idAd") int id) {
-		
+		Admin admin = adminService.findById(id);
+		model.addAttribute("admin", admin);
 		return "admin";
 	}
 	
