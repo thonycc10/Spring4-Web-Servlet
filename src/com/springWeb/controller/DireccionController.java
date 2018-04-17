@@ -32,7 +32,7 @@ public class DireccionController {
 		model.addAttribute("admin", admin); // se guarda su estado en @SessionAttributes con el identificador "admin"
 		model.addAttribute("direccion", new Direccion()); // muestra la vista
 		model.addAttribute("resultado", resultado); // mostramos el resultado.
-		model.addAttribute("direcciones", direccionService.findAll(idAd));
+		model.addAttribute("direcciones", direccionService.findAll(idAd)); 
 		return "direccion";
 	}
 	
