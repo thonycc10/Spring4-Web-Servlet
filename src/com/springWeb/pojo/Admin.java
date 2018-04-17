@@ -1,11 +1,13 @@
 package com.springWeb.pojo;
 
 import java.sql.Timestamp;
+import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 @Entity
 @Table(name="Admin")
@@ -17,7 +19,8 @@ public class Admin {
 	private String nombre;
 	private String cargo;
 	private Timestamp fechaCreacion;
-
+	@OneToMany(mappedBy="admin") // representa el admin de la direcion.java(pojo)
+	private Set<Direccion> direccion; // esto es por la relacion que admin tiene muchas direcciones
 	public Admin() {
 
 	}
@@ -65,6 +68,14 @@ public class Admin {
 
 	public void setFechaCreacion(Timestamp fechaCreacion) {
 		this.fechaCreacion = fechaCreacion;
+	}
+
+	public Set<Direccion> getDireccion() {
+		return direccion;
+	}
+
+	public void setDireccion(Set<Direccion> direccion) {
+		this.direccion = direccion;
 	}
 
 	@Override

@@ -11,5 +11,5 @@ public interface AdminDao {
 	public Admin findById(int id); // buscar
 	public List<Admin> findByNombre(String nombre); //listar
 	public void update(Admin admin); // actualizar
-	public void delete(int idAd); // eliminar
+	public void delete(Admin admin); // eliminar
 }

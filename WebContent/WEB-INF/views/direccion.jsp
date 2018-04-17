@@ -8,34 +8,27 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Insert title here</title>
 <script type="text/javascript"  src='<c:url value="/res/js/jquery.js" />'></script>
-<script type="text/javascript" >
- jQuery(document).ready(function(){
-	jQuery(".confirm").on("click", function(){
-		return confirm("Si eliminas este elemento no se podra recuperar. ¿Continuar?");
-	})
- });
-</script>
 </head>
 <body>
-	<h1>Prueba:</h1>
+	<h1>Direccion.jsp</h1>
 	<!-- pruebas session controler. -->
 	<!-- <c:out value="${mensaje}"/> 
 	<br>
 	<c:out value="${resultado}"/> -->
 	
-	<sf:form action="${pageContext.request.contextPath}/admin/save" method="post" commandName="admin">
+	<sf:form action="${pageContext.request.contextPath}/direccion/save" method="post" commandName="direccion">
 		<table>
-		<c:if test="${admin.idAd ne 0 }">
+		<%-- <c:if test="${admin.idAd ne 0 }">
 		<sf:input path="idAd" type="hidden"/>
 		<sf:input path="fechaCreacion" type="hidden"/>
-		</c:if>
+		</c:if> --%>
 		<tr>
-			<td>Nombre</td>
-			<td><sf:input path="nombre" type="text"/></td>
+			<td>Calle</td>
+			<td><sf:input path="calle" type="text"/></td>
 		</tr>
 		<tr>
-			<td>Cargo</td>
-			<td><sf:input path="cargo" type="text"/></td>
+			<td>C.P.</td>
+			<td><sf:input path="cp" type="text"/></td>
 		</tr>
 		<tr>
 			<td></td>
@@ -44,17 +37,11 @@
 	</table>
 	</sf:form>
 	<br>
-	<%
-	//	for(Admin admin: listAdmin){
-		//	out.print(admin);
-		// }
-	%>
 	<c:out value="${resultado}"></c:out><br><br>
-	<c:forEach items="${listAdmin}" var="admin">
-	 	<c:out value="${admin}"/>
-	 	<a href='<c:url value="/direccion/${admin.idAd}"></c:url>'>Direcci&oacute;n</a>
-	 	<a href='<c:url value="/admin/${admin.idAd}/update"></c:url>'>Actualizar</a>
-	 	<a class="confirm" href='<c:url value="/admin/${admin.idAd}/delete"></c:url>'>Eliminar</a>
+	<c:forEach items="${direcciones}" var="direccion"> <!-- tener presenta que funciona con el toString Direccion -->
+	 	<c:out value="${direccion}"/>
+	 	<%-- <a href='<c:url value="/admin/${admin.idAd}/update"></c:url>'>Actualizar</a>
+	 	<a class="confirm" href='<c:url value="/admin/${admin.idAd}/delete"></c:url>'>Eliminar</a> --%>
 	 	<br>
 	</c:forEach>
 </body>

@@ -45,6 +45,7 @@ public class AdminService {
 
 	public void delete(int idAd) {
 		// TODO Auto-generated method stub
-		 adminDao.delete(idAd);
+		Admin admin = adminDao.findById(idAd); // le estamos pasando el parametro
+		 adminDao.delete(admin);
 	}
 }

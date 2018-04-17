@@ -54,13 +54,13 @@ public class AdminDaoImpl implements AdminDao{
 	@Override
 	public void update(Admin admin) {
 		// TODO Auto-generated method stub
-		
+		getSession().update(admin);
 	}
 
 	@Override
-	public void delete(int idAd) {
+	public void delete(Admin admin) { // hibernate no trabaja con id se debe convertir a un objeto en el servicio
 		// TODO Auto-generated method stub
-		
+		getSession().delete(admin);
 	}
 	
 
